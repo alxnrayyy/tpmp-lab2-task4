@@ -2,8 +2,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -std=c11 -I./src
 TARGET = program
 SRCDIR = src
-SOURCES = $(SRCDIR)/main.c $(SRCDIR)/pupil.c $(SRCDIR)/file_io.c 
-$(SRCDIR)/process.c
+SOURCES = $(SRCDIR)/main.c $(SRCDIR)/pupil.c $(SRCDIR)/file_io.c $(SRCDIR)/process.c
 OBJECTS = $(SOURCES:.c=.o)
 
 all: $(TARGET)
@@ -11,13 +10,15 @@ all: $(TARGET)
 $(TARGET): $(OBJECTS)
 	$(CC) $(OBJECTS) -o $(TARGET)
 
-%.o: %.c
+$(SRCDIR)/%.o: $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJECTS) $(TARGET)
+	rm -f $(SRCDIR)/*.o $(TARGET) result.txt pupils.dat
 
-run: $(TARGET)
+run: all
 	./$(TARGET)
 
 .PHONY: all clean run
+
+
