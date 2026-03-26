@@ -2,7 +2,8 @@ CC = gcc
 CFLAGS = -Wall -Wextra -std=c11 -I./src
 TARGET = program
 SRCDIR = src
-SOURCES = $(wildcard $(SRCDIR)/*.c)
+SOURCES = $(SRCDIR)/main.c $(SRCDIR)/pupil.c $(SRCDIR)/file_io.c 
+$(SRCDIR)/process.c
 OBJECTS = $(SOURCES:.c=.o)
 
 all: $(TARGET)

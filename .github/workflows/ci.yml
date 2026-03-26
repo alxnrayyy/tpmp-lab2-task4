@@ -1,0 +1,30 @@
+name: C Build and Test
+
+on:
+  push:
+    branches: [ main, development ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Install build essentials
+      run: sudo apt-get update && sudo apt-get install -y build-essential
+      
+    - name: Build with Make
+      run: make
+      
+    - name: Check build
+      run: |
+        if [ -f program ]; then
+          echo " Build successful"
+        else
+          echo " Program not found"
+          exit 1
+        fi
