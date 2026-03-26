@@ -9,14 +9,19 @@
 Юрченко Александра, группа 10
 
 ## Usage
+
 make
+
 make run
 
-##Modules
+## Modules
 
 pupil.h/c — структура и функции для работы с данными школьника
+
 file_io.h/c — работа с файлами
+
 process.h/c — обработка данных (фильтрация по классу)
+
 main.c — точка входа
 
 ## Additional Notes
